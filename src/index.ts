@@ -4,6 +4,7 @@ import apiDocs from './config/swagger.config.js';
 import morgan from 'morgan';
 
 import healthCheckRouter from './module/HealthCheck/router/health-check.router.js';
+import movieRouter from './module/Movie/router/movie-router.js';
 
 const PORT = process.env.PORT || 8080;
 const app = express();
@@ -13,6 +14,7 @@ app.use(urlencoded({ extended: true }));
 app.use(morgan('tiny'));
 
 app.use('/api/v1', healthCheckRouter);
+app.use('/api/v1', movieRouter);
 
 app.get('/', (req, res) => {
     res.send('Hello World');
